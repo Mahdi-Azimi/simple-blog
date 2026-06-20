@@ -1,12 +1,9 @@
 <?php
-// ===== تنظیمات اتصال به دیتابیس (phpMyAdmin / MySQL لوکال) =====
-// این مقادیر را مطابق تنظیمات سرور لوکال خودتان (XAMPP/Laragon و ...) ویرایش کنید
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'simple_blog');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// اگر نام پوشه پروژه روی سرور را عوض کردید، این مقدار را هم همان‌طور تغییر دهید
 define('BASE_URL', '/simple-blog');
 
 define('SITE_NAME', 'دفترچه');
