@@ -1,0 +1,549 @@
+/* =========================================================
+   دفترچه — فایل استایل اصلی
+   تم: «کاغذ و یشم» — زمینه‌ای گرم شبیه کاغذ، لهجه‌ی رنگی یشمی
+   ========================================================= */
+
+:root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --ink: #211f1b;
+    --ink-soft: #6e6a62;
+    --ink-faint: #a9a49a;
+    --border: #e7e2d8;
+
+    --accent: #1e6f5c;
+    --accent-dark: #154f42;
+    --accent-soft: #e3f1ec;
+
+    --admin: #b6651d;
+    --admin-soft: #f6e9da;
+
+    --danger: #b23a2e;
+    --danger-soft: #fbe9e7;
+
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 7px;
+
+    --shadow-card: 0 1px 2px rgba(33, 31, 27, 0.04), 0 10px 24px rgba(33, 31, 27, 0.05);
+    --shadow-card-hover: 0 2px 4px rgba(33, 31, 27, 0.06), 0 16px 32px rgba(33, 31, 27, 0.08);
+
+    --font: 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--bg);
+    background-image:
+        radial-gradient(620px 320px at 90% -10%, rgba(30, 111, 92, 0.06), transparent 60%),
+        radial-gradient(520px 300px at 0% 0%, rgba(182, 101, 29, 0.05), transparent 60%);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ===== هدر ===== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(250, 248, 244, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 14px;
+}
+
+.nav-link {
+    color: var(--ink-soft);
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover { color: var(--ink); }
+
+.nav-link--accent {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.nav-user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== flash messages ===== */
+.flash-wrap {
+    max-width: 760px;
+    margin: 16px auto 0;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.flash {
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.flash--success { background: var(--accent-soft); color: var(--accent-dark); }
+.flash--error   { background: var(--danger-soft); color: var(--danger); }
+
+/* ===== main layout ===== */
+.page-main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px 24px 80px;
+}
+
+.feed-head {
+    margin-bottom: 24px;
+}
+
+.feed-head h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-soft);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.empty-state p { margin-bottom: 16px; }
+
+/* ===== فید پست‌ها ===== */
+.post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.post-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 26px 24px 24px;
+    padding-right: 30px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.post-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    right: 0;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--accent);
+    opacity: 0.85;
+}
+
+.post-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+
+.post-card--full {
+    padding: 30px 32px 30px 28px;
+    padding-right: 36px;
+}
+
+.post-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.post-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+}
+
+.post-author {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.badge-admin {
+    background: var(--admin-soft);
+    color: var(--admin);
+}
+
+.post-date {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.icon-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.icon-btn--danger:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.inline-form { margin: 0; }
+
+.post-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 8px;
+}
+
+.post-title--full { font-size: 26px; }
+
+.post-title a:hover { color: var(--accent); }
+
+.post-excerpt {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 10px;
+}
+
+.post-content {
+    color: var(--ink);
+    font-size: 16px;
+    white-space: pre-line;
+}
+
+.read-more {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* ===== صفحات ورود / ثبت‌نام ===== */
+.auth-wrap {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 34px 30px;
+    box-shadow: var(--shadow-card);
+}
+
+.auth-title {
+    font-size: 21px;
+    font-weight: 800;
+    margin: 0 0 22px;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-top: 10px;
+}
+
+.auth-form input,
+.auth-form textarea {
+    font-family: var(--font);
+    font-size: 14.5px;
+    padding: 11px 13px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    transition: border-color 0.15s ease;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.auth-switch {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+}
+
+.auth-switch a { color: var(--accent); font-weight: 700; }
+
+.form-errors {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+}
+
+.form-errors p { margin: 2px 0; }
+
+/* ===== دکمه‌ها ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font);
+    font-size: 14.5px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 11px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.auth-form .btn-primary {
+    margin-top: 16px;
+}
+
+.btn-primary:hover { background: var(--accent-dark); }
+
+.btn-outline {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--ink-soft);
+}
+
+.btn-outline:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn-block { width: 100%; }
+
+/* ===== فرم نوشتن/ویرایش پست (ادمین) ===== */
+.editor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow-card);
+}
+
+.editor-card h1 {
+    font-size: 21px;
+    font-weight: 800;
+    margin: 0 0 22px;
+}
+
+.editor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.editor-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-top: 12px;
+}
+
+.editor-form input,
+.editor-form textarea {
+    font-family: var(--font);
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+}
+
+.editor-form input:focus,
+.editor-form textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.editor-form textarea {
+    resize: vertical;
+    min-height: 220px;
+    line-height: 1.9;
+}
+
+.editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ===== فوتر ===== */
+.site-footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--ink-faint);
+    font-size: 12.5px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 480px) {
+    .header-inner { padding: 14px 18px; }
+    .page-main { padding: 26px 16px 60px; }
+    .post-card { padding: 20px 20px 20px 18px; padding-right: 24px; }
+    .nav-user span:not(.nav-user-avatar) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}
